@@ -114,10 +114,13 @@ public class TripManager {
         int revolveIndex = 0;
         double target = this.trips[0].getDistance();
         for (Trip trip : this.trips) {
+            if(trip == null){
+                break;
+            }
             if (trip.getDistance() < this.trips[revolveIndex].getDistance()) {
                 {
-                    target = trip.getDistance();
-                    revolveIndex++;
+                        target = trip.getDistance();
+                        revolveIndex++;
                 }
 
             }
@@ -133,6 +136,9 @@ public class TripManager {
         int revolveIndex = 0;
         double target = this.trips[0].getDistance();
         for (Trip trip : this.trips) {
+            if(trip == null){
+                break;
+            }
             if (trip.getDistance() > this.trips[revolveIndex].getDistance()) {
                 {
                     target = trip.getDistance();
@@ -149,31 +155,38 @@ public class TripManager {
     }
 
     public void showStatistics(){
-        this.numberOfRegisteredTrips = this.calcNumberOfRegisteredTrips();
-        this.totalDistance = this.calculateDistance();
-        this.totalDistance = this.calculateAverageDistance();
-        this.shortestTrip = this.findShortestTrip();
-        this.longestTrip = this.findLongestTrip();
+        try {
+            this.numberOfRegisteredTrips = this.calcNumberOfRegisteredTrips();
+            this.totalDistance = this.calculateDistance();
+            this.totalDistance = this.calculateAverageDistance();
+            this.shortestTrip = this.findShortestTrip();
+            this.longestTrip = this.findLongestTrip();
 
-        String statistics = String.format("""
+            String statistics = String.format("""
         ============== TRIPS STATISTICS ==============
 
         | %-20s | %18s |
         |----------------------|--------------------|
         | %-20s | %18d |
-        | %-20s | %,18.2f |
-        | %-20s | %,18.2f |
-        | %-20s | %,18.2f |
-        | %-20s | %,18.2f |
+        | %-20s | %,18.2f km |
+        | %-20s | %,18.2f km |
+        | %-20s | %,18.2f km |
+        | %-20s | %,18.2f km |
         """,
-                "Statistic", "Expected Result",
-                "Number of trips", this.numberOfRegisteredTrips,
-                "Total distance", this.totalDistance,
-                "Average distance", this.averageDistance,
-                "Longest trip", this.longestTrip,
-                "Shortest trip", this.shortestTrip
-        );
-        System.out.println(statistics);
+                    "Statistic", "Expected Result",
+                    "Number of trips", this.numberOfRegisteredTrips,
+                    "Total distance", this.totalDistance,
+                    "Average distance", this.averageDistance,
+                    "Longest trip", this.longestTrip,
+                    "Shortest trip", this.shortestTrip
+            );
+            System.out.println(statistics);
+
+        } catch (IllegalStateException e) {
+            System.out.println("Statistics could not be calculated, missing properties.");
+
+        }
+
 
     }
 
@@ -183,7 +196,7 @@ public class TripManager {
         Trip foundTrip = null;
         Scanner reader = new Scanner(System.in);
         System.out.print("Enter the id for the trip: ");
-        int tripID = reader.nextInt();
+        int tripID = Integer.parseInt(reader.nextLine());
         for(Trip trip : trips){
             if(trip.getTripId() == tripID){
                 tripFound = true;
@@ -193,12 +206,15 @@ public class TripManager {
 
         }
         if(tripFound){
+            System.out.println("Trip with matching ID:");
             foundTrip.displayInformation();
+
+        }else {
+            System.out.println("The trip with provided ID could no be found");
+
 
         }
 
-        System.out.println("The trip with provided ID could no be found");
-        reader.close();
 
     }
 

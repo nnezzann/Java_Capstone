@@ -57,7 +57,7 @@ public class Main {
                     try {
                         tripManager.calculateRevenue();
                         break;
-                    }catch (IllegalStateException e){
+                    }catch (Exception e){
                         System.out.println("There is no trip registered, register one to continue!");
                     }
 
@@ -65,6 +65,7 @@ public class Main {
                 case 4:
                     tripManager.showStatistics();
                     break;
+
                 case 5:
                     tripManager.searchTrip();
                     break;
@@ -86,6 +87,7 @@ public class Main {
                 Thread.currentThread().interrupt();
                 break;
             }
+            reader.close();
         }
 
 
