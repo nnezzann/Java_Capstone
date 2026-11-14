@@ -714,15 +714,15 @@ We will only move to **Milestone 2** once you have demonstrated that you underst
 
 You are ready to move beyond this roadmap's fundamentals when:
 
-- [ ] All three classes have clear responsibilities.
-- [ ] All eight application features work.
-- [ ] All mandatory test scenarios pass.
-- [ ] You can explain primitive and reference types.
-- [ ] You can explain scope and type casting.
-- [ ] You can explain String comparison and manipulation.
-- [ ] You can traverse and manage an array of objects.
-- [ ] You can explain the role of each constructor and method.
-- [ ] You can explain how the three classes collaborate.
-- [ ] You can implement the core functionality again without copying your previous solution.
+- [x] All three classes have clear responsibilities.
+- [x] All eight application features work.
+- [x] All mandatory test scenarios pass.
+- [x] You can explain primitive and reference types.
+- [x] You can explain scope and type casting.
+- [x] You can explain String comparison and manipulation.
+- [x] You can traverse and manage an array of objects.
+- [x] You can explain the role of each constructor and method.
+- [x] You can explain how the three classes collaborate.
+- [x] You can implement the core functionality again without copying your previous solution.
 
 **The goal:** Finish this project with a working application and a demonstrable understanding of Java fundamentals — not simply a completed programming exercise.
